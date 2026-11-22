@@ -16,7 +16,7 @@
     "sous-titres",
     "conseil municipal"
   ],
-  "textdomain": "rgaa-transcript-lescribeaudio",
+  "textdomain": "le-scribe-audio-rgaa-transcript",
   "supports": {
     "html": false,
     "align": ["wide", "full"]

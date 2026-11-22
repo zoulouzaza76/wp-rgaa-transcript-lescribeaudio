@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Transcription Accessible RGAA 4.1 (SRT / VTT)
+ * Plugin Name:       Le Scribe Audio RGAA Transcript
  * Plugin URI:        https://lescribeaudio.com/sous-titrage-accessibilite-rgaa
  * Description:       Bloc Gutenberg et shortcode [rgaa_transcript] pour afficher une transcription textuelle accessible conforme RGAA 4.1 (critères 4.1 et 4.3) à partir d'un fichier .SRT ou .VTT, avec typographie française et recherche instantanée. 100 % local, sans dépendance externe.
  * Version:           1.0.0
@@ -10,7 +10,7 @@
  * Author URI:        https://lescribeaudio.com
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       rgaa-transcript-lescribeaudio
+ * Text Domain:       le-scribe-audio-rgaa-transcript
  * Domain Path:       /languages
  */
 
@@ -144,7 +144,7 @@ function rgaa_lsa_parse_transcript_turns( $raw, $apply_typo_fr = true ) {
 			$working     = trim( $m_br[2] );
 		}
 
-		$speaker = __( 'Intervenant', 'rgaa-transcript-lescribeaudio' );
+		$speaker = __( 'Intervenant', 'le-scribe-audio-rgaa-transcript' );
 		$content = $working;
 
 		if ( preg_match( $vtt_voice_re, $working, $m_v ) ) {
@@ -195,7 +195,7 @@ function rgaa_lsa_parse_transcript_turns( $raw, $apply_typo_fr = true ) {
  */
 function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 	$defaults = array(
-		'title'            => __( 'Transcription textuelle intégrale', 'rgaa-transcript-lescribeaudio' ),
+		'title'            => __( 'Transcription textuelle intégrale', 'le-scribe-audio-rgaa-transcript' ),
 		'rawTranscript'    => '',
 		'mediaUrl'         => '',
 		'defaultOpen'      => false,
@@ -214,7 +214,7 @@ function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 
 	if ( empty( $turns ) ) {
 		if ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
-			return '<div class="rgaa-lsa-empty">' . esc_html__( 'Importez un fichier .SRT / .VTT ou collez votre transcription dans les réglages du bloc.', 'rgaa-transcript-lescribeaudio' ) . '</div>';
+			return '<div class="rgaa-lsa-empty">' . esc_html__( 'Importez un fichier .SRT / .VTT ou collez votre transcription dans les réglages du bloc.', 'le-scribe-audio-rgaa-transcript' ) . '</div>';
 		}
 		return '';
 	}
@@ -227,7 +227,7 @@ function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 	$uid        = wp_unique_id( 'rgaa-transcript-' );
 	$title      = sanitize_text_field( (string) $attrs['title'] );
 	$media_url  = ! empty( $attrs['mediaUrl'] ) ? esc_url( (string) $attrs['mediaUrl'] ) : '';
-	$open_attr  = ! empty( $attrs['defaultOpen'] ) ? ' open' : '';
+	$is_open    = ! empty( $attrs['defaultOpen'] );
 	$show_tc    = ! empty( $attrs['includeTimecodes'] );
 	$show_find  = ! empty( $attrs['enableSearch'] );
 	$turn_count = count( $turns );
@@ -235,7 +235,7 @@ function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 	ob_start();
 	?>
 	<section class="rgaa-lsa-transcript" aria-labelledby="<?php echo esc_attr( $uid . '-heading' ); ?>">
-		<details class="rgaa-lsa-details"<?php echo $open_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+		<details class="rgaa-lsa-details"<?php echo $is_open ? ' open' : ''; ?>>
 			<summary class="rgaa-lsa-summary" id="<?php echo esc_attr( $uid . '-heading' ); ?>">
 				<span class="rgaa-lsa-badge" aria-hidden="true">RGAA 4.1</span>
 				<span class="rgaa-lsa-title"><?php echo esc_html( $title ); ?></span>
@@ -244,7 +244,7 @@ function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 					echo esc_html(
 						sprintf(
 							/* translators: %d: number of speaker turns */
-							_n( '%d prise de parole', '%d prises de parole', $turn_count, 'rgaa-transcript-lescribeaudio' ),
+							_n( '%d prise de parole', '%d prises de parole', $turn_count, 'le-scribe-audio-rgaa-transcript' ),
 							$turn_count
 						)
 					);
@@ -256,7 +256,7 @@ function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 				<?php if ( $media_url ) : ?>
 					<p class="rgaa-lsa-media-link">
 						<a href="<?php echo esc_url( $media_url ); ?>" rel="noopener">
-							<?php esc_html_e( 'Accéder à la vidéo ou à l’enregistrement source', 'rgaa-transcript-lescribeaudio' ); ?>
+							<?php esc_html_e( 'Accéder à la vidéo ou à l’enregistrement source', 'le-scribe-audio-rgaa-transcript' ); ?>
 						</a>
 					</p>
 				<?php endif; ?>
@@ -264,7 +264,7 @@ function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 				<?php if ( $show_find ) : ?>
 					<div class="rgaa-lsa-search-row">
 						<label class="rgaa-lsa-search-label" for="<?php echo esc_attr( $uid . '-search' ); ?>">
-							<?php esc_html_e( 'Rechercher dans la transcription', 'rgaa-transcript-lescribeaudio' ); ?>
+							<?php esc_html_e( 'Rechercher dans la transcription', 'le-scribe-audio-rgaa-transcript' ); ?>
 						</label>
 						<input
 							id="<?php echo esc_attr( $uid . '-search' ); ?>"
@@ -272,7 +272,7 @@ function rgaa_lsa_render_transcript( $attributes = array(), $content = '' ) {
 							class="rgaa-lsa-search-input"
 							data-rgaa-lsa-filter="<?php echo esc_attr( $uid . '-list' ); ?>"
 							data-rgaa-lsa-status="<?php echo esc_attr( $uid . '-status' ); ?>"
-							placeholder="<?php esc_attr_e( 'Mot-clé, intervenant, délibération…', 'rgaa-transcript-lescribeaudio' ); ?>"
+							placeholder="<?php esc_attr_e( 'Mot-clé, intervenant, délibération…', 'le-scribe-audio-rgaa-transcript' ); ?>"
 						/>
 						<span id="<?php echo esc_attr( $uid . '-status' ); ?>" class="rgaa-lsa-status" role="status" aria-live="polite"></span>
 					</div>
@@ -353,7 +353,7 @@ add_action( 'init', 'rgaa_lsa_init' );
 function rgaa_lsa_shortcode( $atts, $content = null ) {
 	$parsed = shortcode_atts(
 		array(
-			'title'     => __( 'Transcription textuelle intégrale', 'rgaa-transcript-lescribeaudio' ),
+			'title'     => __( 'Transcription textuelle intégrale', 'le-scribe-audio-rgaa-transcript' ),
 			'media_url' => '',
 			'open'      => 'false',
 			'timecodes' => 'true',

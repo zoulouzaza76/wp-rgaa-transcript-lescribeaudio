@@ -1,18 +1,18 @@
-=== Transcription Accessible RGAA 4.1 (SRT / VTT) ===
+=== Le Scribe Audio RGAA Transcript ===
 Contributors: lescribeaudio
 Tags: rgaa, accessibility, transcript, subtitles, srt
 Requires at least: 6.2
-Tested up to: 6.7
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.0
-License: GPLv2 or later
+License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Bloc Gutenberg et shortcode [rgaa_transcript] pour afficher une transcription accessible conforme RGAA 4.1 (critères 4.1 et 4.3) depuis un fichier .SRT ou .VTT.
 
 == Description ==
 
-**Transcription Accessible RGAA 4.1 (SRT / VTT)** permet aux collectivités territoriales (conseils municipaux, EPCI), universités, associations et créateurs de podcasts de publier facilement une transcription textuelle accessible sous leurs vidéos ou enregistrements audio, conformément à l'article 47 de la loi du 11 février 2005 et au référentiel **RGAA 4.1** (critères 4.1 et 4.3).
+**Le Scribe Audio RGAA Transcript** permet aux collectivités territoriales (conseils municipaux, EPCI), universités, associations et créateurs de podcasts de publier facilement une transcription textuelle accessible sous leurs vidéos ou enregistrements audio, conformément à l'article 47 de la loi du 11 février 2005 et au référentiel **RGAA 4.1** (critères 4.1 et 4.3).
 
 ### Fonctionnalités principales
 

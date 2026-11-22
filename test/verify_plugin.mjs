@@ -24,11 +24,11 @@ for (const rel of required) {
 const block = JSON.parse(fs.readFileSync(path.join(root, 'block.json'), 'utf8'));
 assert.equal(block.apiVersion, 3);
 assert.equal(block.name, 'lescribeaudio/rgaa-transcript');
-assert.equal(block.textdomain, 'rgaa-transcript-lescribeaudio');
+assert.equal(block.textdomain, 'le-scribe-audio-rgaa-transcript');
 
 // 3. Validate PHP plugin headers & WordPress.org escaping / security hygiene
 const phpSrc = fs.readFileSync(path.join(root, 'wp-rgaa-transcript-lescribeaudio.php'), 'utf8');
-assert.match(phpSrc, /Plugin Name:\s+Transcription Accessible RGAA 4\.1/);
+assert.match(phpSrc, /Plugin Name:\s+Le Scribe Audio RGAA Transcript/);
 assert.match(phpSrc, /License:\s+GPL-2\.0-or-later/);
 assert.match(phpSrc, /if\s*\(\s*!\s*defined\(\s*'ABSPATH'\s*\)\s*\)/);
 assert.match(phpSrc, /esc_html\(/);

@@ -60,29 +60,29 @@
           null,
           el(
             PanelBody,
-            { title: __('Options d’accessibilité RGAA 4.1', 'rgaa-transcript-lescribeaudio'), initialOpen: true },
+            { title: __('Options d’accessibilité RGAA 4.1', 'le-scribe-audio-rgaa-transcript'), initialOpen: true },
             el(ToggleControl, {
-              label: __('Déplier la transcription par défaut', 'rgaa-transcript-lescribeaudio'),
+              label: __('Déplier la transcription par défaut', 'le-scribe-audio-rgaa-transcript'),
               checked: !!attrs.defaultOpen,
               onChange: function (v) { setAttributes({ defaultOpen: !!v }); },
             }),
             el(ToggleControl, {
-              label: __('Afficher les codes temporels (HH:MM:SS)', 'rgaa-transcript-lescribeaudio'),
+              label: __('Afficher les codes temporels (HH:MM:SS)', 'le-scribe-audio-rgaa-transcript'),
               checked: attrs.includeTimecodes !== false,
               onChange: function (v) { setAttributes({ includeTimecodes: !!v }); },
             }),
             el(ToggleControl, {
-              label: __('Activer la barre de recherche intégrée', 'rgaa-transcript-lescribeaudio'),
+              label: __('Activer la barre de recherche intégrée', 'le-scribe-audio-rgaa-transcript'),
               checked: attrs.enableSearch !== false,
               onChange: function (v) { setAttributes({ enableSearch: !!v }); },
             }),
             el(ToggleControl, {
-              label: __('Typographie française automatique (espaces insécables)', 'rgaa-transcript-lescribeaudio'),
+              label: __('Typographie française automatique (espaces insécables)', 'le-scribe-audio-rgaa-transcript'),
               checked: attrs.frenchTypography !== false,
               onChange: function (v) { setAttributes({ frenchTypography: !!v }); },
             }),
             el(TextControl, {
-              label: __('URL de la vidéo ou de l’audio source (optionnel)', 'rgaa-transcript-lescribeaudio'),
+              label: __('URL de la vidéo ou de l’audio source (optionnel)', 'le-scribe-audio-rgaa-transcript'),
               value: attrs.mediaUrl || '',
               placeholder: 'https://...',
               onChange: function (v) { setAttributes({ mediaUrl: v }); },
@@ -96,15 +96,15 @@
             'div',
             { className: 'rgaa-lsa-editor-head' },
             el('span', { className: 'rgaa-lsa-badge' }, 'RGAA 4.1'),
-            el('strong', null, __('Transcription Accessible (.SRT / .VTT)', 'rgaa-transcript-lescribeaudio')),
+            el('strong', null, __('Transcription Accessible (.SRT / .VTT)', 'le-scribe-audio-rgaa-transcript')),
             el(
               'span',
               { className: 'rgaa-lsa-editor-count' },
-              lineCount > 0 ? lineCount + ' ' + __('lignes détectées', 'rgaa-transcript-lescribeaudio') : __('Vide', 'rgaa-transcript-lescribeaudio')
+              lineCount > 0 ? lineCount + ' ' + __('lignes détectées', 'le-scribe-audio-rgaa-transcript') : __('Vide', 'le-scribe-audio-rgaa-transcript')
             )
           ),
           el(TextControl, {
-            label: __('Titre de l’accordéon accessible', 'rgaa-transcript-lescribeaudio'),
+            label: __('Titre de l’accordéon accessible', 'le-scribe-audio-rgaa-transcript'),
             value: attrs.title || '',
             onChange: function (v) { setAttributes({ title: v }); },
           }),
@@ -112,7 +112,7 @@
             'div',
             { className: 'rgaa-lsa-editor-upload' },
             el('label', { className: 'rgaa-lsa-upload-label' },
-              __('Importer directement un fichier .SRT, .VTT ou .TXT : ', 'rgaa-transcript-lescribeaudio'),
+              __('Importer directement un fichier .SRT, .VTT ou .TXT : ', 'le-scribe-audio-rgaa-transcript'),
               el('input', {
                 type: 'file',
                 accept: '.srt,.vtt,.txt',
@@ -121,8 +121,8 @@
             )
           ),
           el(TextareaControl, {
-            label: __('Contenu .SRT / .VTT ou texte horodaté', 'rgaa-transcript-lescribeaudio'),
-            help: __('Les balises temporelles et étiquettes d’intervenants (<v Nom> ou Nom :) sont automatiquement fusionnées et nettoyées en HTML sémantique.', 'rgaa-transcript-lescribeaudio'),
+            label: __('Contenu .SRT / .VTT ou texte horodaté', 'le-scribe-audio-rgaa-transcript'),
+            help: __('Les balises temporelles et étiquettes d’intervenants (<v Nom> ou Nom :) sont automatiquement fusionnées et nettoyées en HTML sémantique.', 'le-scribe-audio-rgaa-transcript'),
             rows: 8,
             value: attrs.rawTranscript || '',
             onChange: function (v) { setAttributes({ rawTranscript: v }); },
