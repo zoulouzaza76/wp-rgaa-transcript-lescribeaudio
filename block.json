@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "lescribeaudio/rgaa-transcript",
+  "version": "1.0.0",
+  "title": "Transcription Accessible RGAA 4.1 (SRT / VTT)",
+  "category": "media",
+  "icon": "format-status",
+  "description": "Affiche une transcription textuelle accessible conforme RGAA 4.1 (critères 4.1 et 4.3) à partir d'un fichier .SRT ou .VTT avec recherche instantanée.",
+  "keywords": [
+    "rgaa",
+    "accessibilite",
+    "transcription",
+    "srt",
+    "vtt",
+    "sous-titres",
+    "conseil municipal"
+  ],
+  "textdomain": "rgaa-transcript-lescribeaudio",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Transcription textuelle intégrale"
+    },
+    "rawTranscript": {
+      "type": "string",
+      "default": ""
+    },
+    "mediaUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "defaultOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "includeTimecodes": {
+      "type": "boolean",
+      "default": true
+    },
+    "enableSearch": {
+      "type": "boolean",
+      "default": true
+    },
+    "frenchTypography": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "editorScript": "rgaa-lsa-editor",
+  "editorStyle": "rgaa-lsa-editor",
+  "style": "rgaa-lsa-frontend"
+}
